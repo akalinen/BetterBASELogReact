@@ -1,20 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { queryJumps, insertJump, updateJump, deleteJump, createDatabaseTables, deleteDatabase, getMaxJumpId } from './Databases/JumpDB';
+import HomeScreen from './Screens/HomeScreen';
+import JumpListFlatList from './Screens/JumpListFlatList';
+import JumpScreen from './Screens/JumpScreen';
+//import AddNewJumpScreen from './Screens/AddNewJumpScreen';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Test Update.  Ok this works 123.</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerTitle: '' }}>
+                <Stack.Screen name="Home" component={HomeScreen}/>
+                <Stack.Screen name="JumpScreen" component={JumpScreen} />
+                <Stack.Screen name="JumpListFlatList" component={JumpListFlatList} />
+                {/* <Stack.Screen name="AddNewJumpScreen" component={AddNewJumpScreen} /> */}
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    input: {
+        width: 200,
+        borderColor: 'gray',
+        borderWidth: 1,
+        margin: 8,
+    },
 });
