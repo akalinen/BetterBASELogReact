@@ -50,7 +50,6 @@ const JumpScreen = () => {
                 />
                 <Button
                     title='Save'
-                    onPress={this.saveJump}
                 /> 
             </View>
         );
